@@ -1,5 +1,5 @@
-define(['lib/logger', 'playback/view/prototype/component'],
-function(Logger, Component) {
+define(['prototype/component'],
+function(Component) {
     'use strict';
 
     function Checkbox (args) {

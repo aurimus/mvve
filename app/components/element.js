@@ -1,11 +1,11 @@
-define(['lib/lodash', 'lib/logger', 'playback/view/prototype/component'],
-function (_, Logger, Component) {
+define(['lib/lodash', 'prototype/component'],
+function (_, Component) {
     'use strict';
 
     function Element (args) {
         this.data = args.data ? args.data : null;
         this.view = new View(args.id);
-        
+
         if (args.template) {
             var templateFn;
 

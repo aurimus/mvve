@@ -1,20 +1,26 @@
-define(['prototype/widget'], 
-function (Widget) {
+define(['prototype/widget', 'tree/ToDoList/list'],
+function (Widget, List) {
 
-    function Body () {
+    function Root (args) {
+        this.model = args.model.todos;
         this.view = new View();
-        this.children = {
-
-        };
-
-        this.init = function () {
-            
-        };
+        this.children = [
+            new List({model: this.model}),
+            new List({model: this.model}),
+            new List({model: this.model}),
+            new List({model: this.model}),
+            new List({model: this.model}),
+            new List({model: this.model}),
+            new List({model: this.model}),
+            new List({model: this.model}),
+            new List({model: this.model}),
+            new List({model: this.model}),
+        ];
     }
 
     function View () {
         this.dom = document.createElement('div');
-        this.dom.classList.add('root-widget');
+        this.dom.classList.add('root');
     }
 
     Root.prototype = Object.create(Widget.prototype);

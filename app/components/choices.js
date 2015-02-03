@@ -1,5 +1,5 @@
-define(['lib/logger', 'playback/view/prototype/component', 'lib/lodash', 'playback/view/helpers'],
-function(Logger, Component, _, Helpers) {
+define(['prototype/component', 'lib/lodash'],
+function(Component, _) {
     'use strict';
 
     function Choices (args) {

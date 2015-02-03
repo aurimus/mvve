@@ -3,11 +3,12 @@
     <title>Sample MVE application</title>
   </head>
   <body>
-    <script src="require.config.js"></script>
     <script src="bower_components/requirejs/require.js"></script>
+    <script src="require.config.js"></script>
     <script>
       require(['model', 'tree/Root'], function(Model, Root) {
-          root = new Root(Model);
+          root = new Root({model: new Model() });
+          root.attach(document.body);
       });
     </script>
   </body>
