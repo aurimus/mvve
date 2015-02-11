@@ -1,21 +1,20 @@
-define(['prototype/widget', 'tree/ToDoList/list'],
-function (Widget, List) {
+define(['app/prototype/widget',
+        'app/prototype/model',
+        'app/tree/ToDoList/list',
+        'app/tree/ToDoList/addItemBox'],
+function (Widget, Model, List, AddItemBox) {
 
-    function Root (args) {
-        this.model = args.model.todos;
+    function Root (data) {
+        this.model = new Model(data);
         this.view = new View();
-        this.children = [
-            new List({model: this.model}),
-            new List({model: this.model}),
-            new List({model: this.model}),
-            new List({model: this.model}),
-            new List({model: this.model}),
-            new List({model: this.model}),
-            new List({model: this.model}),
-            new List({model: this.model}),
-            new List({model: this.model}),
-            new List({model: this.model}),
-        ];
+
+        this.addSubWidget([
+            new AddItemBox(data),
+            new List(data),
+            new List(data)
+        ])
+
+        Widget.call(this);
     }
 
     function View () {

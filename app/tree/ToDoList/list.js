@@ -1,15 +1,19 @@
-define(['prototype/widget', 'tree/ToDoList/item'],
-function (Widget, Item) {
+define(['app/prototype/widget', 'app/tree/ToDoList/item', 'app/prototype/model'],
+function (Widget, Item, Model) {
 
-    function List (args) {
-        this.model = args.model;
+    function List (data) {
+        this.model = new Model(data);
         this.view = new View();
 
-        this.children = [];
-        this.model.forEach(function(item){
-            this.children.push( new Item(item) );
+        data.forEach(function(item_data){
+            this.addSubWidget( new Item(item_data) );
         }, this);
 
+        Widget.call(this, {
+            adds: function (data) {
+                this.addSubWidget(new Item(data));
+            }
+        });
     }
 
     function View () {

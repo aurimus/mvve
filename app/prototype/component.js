@@ -2,17 +2,9 @@ define([],
 function() {
     'use strict';
 
-    var Component = function(args){
-        Object.observe(this.model, function(changes){
-            changes.forEach(function(change){
-                if (typeof this['set_' + change.name] == 'function'){
-                    this['set_' + change.name](this.model[change.name])
-                }
-            }, this);
-        }.bind(this));
-    };
+    var Component = function(){};
 
-    Component.prototype.events = function(handlers) {
+    Component.prototype.listen = function(handlers) {
         for (var evt in handlers){
             this.view.dom.addEventListener(evt, handlers[evt].bind(this));
         }
@@ -37,29 +29,29 @@ function() {
         }
     }
 
-    Component.prototype.attach = function(container) {
-        append(container, this);
+    Component.prototype.addSubWidget = function(widgets, node) {
+        var attach_point = node ? node : this.view.dom;
+        if (!this.children) this.children = [];
 
-        function append(parent, widget) {
-            var dom = widget.view.dom;
-
-            // Make all children
-            if (widget.children instanceof Array) {
-                widget.children.forEach(function(widget){
-                    append(dom, widget);
-                })
-            } else if (widget.children instanceof Object) {
-                for (var name in widget.children) {
-                    append(dom, widget.children[name]);
-                }
+        if (widgets instanceof Component) {
+            var widget = widgets;
+            append(widget);
+            this.children.push(widget);
+        } else if (widgets instanceof Array) widgets.forEach(function (w) {
+                append(w);
+                this.children.push(w);
+            }, this);
+        else if (widgets[Object.keys(widgets)[0]] instanceof Component) {
+            for (var key in widgets) {
+                append(widget[key]);
+                this[key] = widgets[key];
             }
-
-            parent.appendChild(dom);
-
-            // Initialize after dom is attached to the dom
-            if (typeof(widget.init) == 'function') { widget.init(); }
         }
 
+        function append (widget) {
+            attach_point.appendChild(widget.view.dom);
+            if (typeof(widget.init) == 'function') { widget.init(); }
+        }
     }
 
     return Component;

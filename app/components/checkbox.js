@@ -1,4 +1,4 @@
-define(['prototype/component'],
+define(['app/prototype/component'],
 function(Component) {
     'use strict';
 

@@ -1,39 +1,44 @@
-define(['prototype/widget'],
-function(Widget) {
+define(['app/prototype/widget', 'app/prototype/model'],
+function(Widget, Model) {
     'use strict';
 
-    function Item (args) {
-        this.model = args;
-        this.view = new View({
-            id: 'todoitem',
-            label: this.model.title,
-            checked: this.model.completed
-        });
+    function Item (data) {
+        this.model = new Model(data);
+        this.view = new View(data);
+
+        this.view.input.addEventListener('focus', function(evt){
+            this.model.set('completed', false);
+        }.bind(this));
 
         this.view.checkbox.addEventListener('change', function(evt){
-            this.model.completed = evt.target.checked;
+            this.model.set('completed', evt.target.checked);
         }.bind(this));
-
-        this.set_completed = function (state) { this.view.checkbox.checked = state; }
 
         this.view.input.addEventListener('change', function(evt){
-            this.model.title = evt.target.value;
+            this.model.set('title', evt.target.value);
         }.bind(this));
 
-        this.set_title = function (title) { this.view.input.value = title; }
-
-        Widget.call(this);
+        Widget.call(this, {
+            updates: {
+                completed: function (state) {
+                    this.view.checkbox.checked = state;
+                },
+                title: function (title) {
+                    this.view.input.value = title;
+                }
+            }
+        });
     }
 
-    function View (args) {
+    function View (model) {
         this.dom = document.createElement('label');
         this.input = document.createElement('input');
-        this.input.setAttribute('value', args.label);
+        this.input.setAttribute('value', model.title);
 
         this.checkbox = document.createElement('input');
         this.checkbox.setAttribute('type', 'checkbox');
-        this.checkbox.setAttribute('name', args.id);
-        this.checkbox.checked = args.checked;
+        this.checkbox.setAttribute('name', 'todoitem');
+        this.checkbox.checked = model.completed;
 
         this.dom.appendChild(this.checkbox);
         this.dom.appendChild(this.input);

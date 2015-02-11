@@ -1,5 +1,5 @@
-define(['prototype/component', 'lib/lodash'],
-function(Component, _) {
+define(['app/prototype/component'],
+function(Component) {
     'use strict';
 
     function Container (args) {

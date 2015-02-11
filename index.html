@@ -1,14 +1,17 @@
 <html>
   <head>
     <title>Sample MVE application</title>
+    <link rel="stylesheet" type="text/css" href="app/style/main.css" />
   </head>
   <body>
     <script src="bower_components/requirejs/require.js"></script>
     <script src="require.config.js"></script>
     <script>
-      require(['model', 'tree/Root'], function(Model, Root) {
-          root = new Root({model: new Model() });
-          root.attach(document.body);
+      require(['app/prototype/model', 'app/tree/Root', 'app/data/todos'], 
+      function(Model, Root, todos) {
+          root = new Root(todos);
+          document.body.appendChild(root.view.dom);
+          // root.initAll();
       });
     </script>
   </body>

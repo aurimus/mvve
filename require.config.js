@@ -1,4 +1,4 @@
 require.config({
-	baseUrl: "/app",
+	baseUrl: "",
 	waitSeconds: 15
 });

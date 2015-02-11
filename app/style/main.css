@@ -1,0 +1,22 @@
+.todolist {
+    margin: 10px;
+    width: 150px;
+    display: inline-block;
+}
+
+.todolist > label {
+    display: block;
+}
+
+.todolist > label > input {
+    border: none;
+}
+
+.todolist > label > input:focus {
+    border: 1px solid black;
+    text-decoration: none !important;
+}
+
+.todolist > label > input:checked + input {
+    text-decoration:line-through;
+}
