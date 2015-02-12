@@ -1,4 +1,4 @@
-define(['app/data/todos', 'app/prototype/widget', 'app/tree/ToDoList/item', 'app/tree/ToDoList/list', 'app/tree/Root'], 
+define(['data/todos', 'prototype/widget', 'tree/ToDoList/item', 'tree/ToDoList/list', 'tree/Root'], 
 function(todos, Widget, Item, List, Root) {
 
     describe("ToDoList", function() {

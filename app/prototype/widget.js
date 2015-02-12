@@ -1,4 +1,4 @@
-define(['app/prototype/component'],
+define(['prototype/component'],
 function(Component) {
     'use strict';
     var Widget = function(callbacks){

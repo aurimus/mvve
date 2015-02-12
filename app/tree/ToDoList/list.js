@@ -1,4 +1,4 @@
-define(['app/prototype/widget', 'app/tree/ToDoList/item', 'app/prototype/model'],
+define(['prototype/widget', 'tree/ToDoList/item', 'prototype/model'],
 function (Widget, Item, Model) {
 
     function List (data) {

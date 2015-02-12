@@ -1,7 +1,7 @@
-define(['app/prototype/widget',
-        'app/prototype/model',
-        'app/tree/ToDoList/list',
-        'app/tree/ToDoList/addItemBox'],
+define(['prototype/widget',
+        'prototype/model',
+        'tree/ToDoList/list',
+        'tree/ToDoList/addItemBox'],
 function (Widget, Model, List, AddItemBox) {
 
     function Root (data) {

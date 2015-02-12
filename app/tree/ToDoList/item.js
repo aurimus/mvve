@@ -1,4 +1,4 @@
-define(['app/prototype/widget', 'app/prototype/model'],
+define(['prototype/widget', 'prototype/model'],
 function(Widget, Model) {
     'use strict';
 

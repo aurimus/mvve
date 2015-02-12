@@ -7,7 +7,7 @@
     <script src="bower_components/requirejs/require.js"></script>
     <script src="require.config.js"></script>
     <script>
-      require(['app/prototype/model', 'app/tree/Root', 'app/data/todos'], 
+      require(['prototype/model', 'tree/Root', 'data/todos'], 
       function(Model, Root, todos) {
           root = new Root(todos);
           document.body.appendChild(root.view.dom);
