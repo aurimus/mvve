@@ -1,6 +1,14 @@
-# MVVE -
+### Model View ViewModel TODO App
 
-### A small Model View Viewmodel Event (MVVE) prototype for flexible development with Object.observe
+###### Example TODO application with Model View Viewmodel Event (MVVE) prototype for flexible test-first development with pure Javascript.
 
-npm install
-karma start
+Run tests:
+
+    cd mvve
+    npm install
+    karma start
+
+Use your favorite server to serve index.html
+
+    npm install -g http-server
+    http-server
