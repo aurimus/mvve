@@ -11,6 +11,9 @@ function (Widget, Model, List, AddItemBox) {
         this.addSubWidget([
             new AddItemBox(data),
             new List(data),
+            new List(data),
+            new List(data),
+            new List(data),
             new List(data)
         ])
 

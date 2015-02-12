@@ -6,7 +6,9 @@ function (Widget, Model) {
         this.view = new View();
 
         this.view.addBtn.addEventListener('click', function(evt){
-            this.model.push({title: this.view.input.value, completed: false});
+            if (this.view.input.value) {
+                this.model.push({title: this.view.input.value, completed: false});
+            }
             this.view.input.value = '';
         }.bind(this));
 
